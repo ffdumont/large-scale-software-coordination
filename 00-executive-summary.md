@@ -1,20 +1,20 @@
-# Executive Summary
+# Résumé exécutif
 
-> Status: draft placeholder. This section should be written last, once the argument and evidence base are stable.
+> Statut : brouillon. Cette section sera finalisée lorsque l’argumentation et la base de preuves seront stabilisées.
 
-## Purpose
+## Objectif
 
-This executive summary will present the core argument of the paper in 2 to 3 pages.
+Ce résumé présentera l’argument principal du document en 2 à 3 pages.
 
-It should answer:
+Il répondra aux questions suivantes :
 
-- why simplifying a large-scale software organization is necessary;
-- why simplification must not mean removing essential coordination mechanisms;
-- which mechanisms appear indispensable;
-- what a pragmatic lightweight target organization could look like.
+- pourquoi il est nécessaire de simplifier une organisation logicielle à grande échelle ;
+- pourquoi la simplification ne doit pas signifier la suppression des mécanismes de coordination essentiels ;
+- quels mécanismes paraissent indispensables ;
+- à quoi pourrait ressembler une organisation cible légère et pragmatique.
 
-## Draft thesis
+## Thèse provisoire
 
-Large-scale software development does not become difficult primarily because of frameworks. It becomes difficult because coordination, dependencies, architecture, prioritization, integration, quality, visibility, and governance become systemic problems once dozens of teams work on interdependent systems.
+Le développement logiciel à grande échelle ne devient pas difficile principalement à cause des frameworks. La difficulté vient du fait que la coordination, les dépendances, l’architecture, la priorisation, l’intégration, la qualité, la visibilité et la gouvernance deviennent des problèmes systémiques dès lors que des dizaines d’équipes travaillent sur des systèmes interdépendants.
 
-The objective is therefore not to replace one framework with another, but to identify the smallest set of coordination mechanisms required by the context.
+L’objectif n’est donc pas de remplacer un framework par un autre, mais d’identifier le plus petit ensemble de mécanismes de coordination requis par le contexte.

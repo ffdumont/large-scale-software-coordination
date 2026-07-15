@@ -1,43 +1,43 @@
-# Annex D — Glossary
+# Annexe D — Glossaire
 
-## Purpose
+## Objectif
 
-This glossary defines neutral terms used in the paper, avoiding unnecessary dependence on framework-specific vocabulary.
+Ce glossaire définit les termes neutres employés dans le document afin d’éviter toute dépendance inutile à un vocabulaire propre à un framework.
 
-## Terms
+## Termes
 
-### Alignment
+### Alignement
 
-Shared understanding of goals, priorities, constraints, and trade-offs across teams and decision-makers.
+Compréhension partagée des objectifs, des priorités, des contraintes et des compromis entre les équipes et les décideurs.
 
-### Autonomy
+### Autonomie
 
-The ability of teams to make local decisions within explicit strategic, architectural, and operational boundaries.
+La capacité des équipes à prendre des décisions locales dans des limites stratégiques, architecturales et opérationnelles explicites.
 
-### Coordination mechanism
+### Mécanisme de coordination
 
-A structure, practice, role, artifact, metric, or cadence that reduces uncertainty or dependency costs between actors.
+Une structure, une pratique, un rôle, un artefact, une métrique ou une cadence qui réduit l'incertitude ou les coûts de dépendance entre les acteurs.
 
-### Coupling
+### Couplage
 
-A condition where changes in one component, team, or decision area require changes, decisions, or validation elsewhere.
+Une condition dans laquelle les changements dans un composant, une équipe ou un domaine de décision nécessitent des changements, des décisions ou une validation ailleurs.
 
-### Dependency
+### Dépendance
 
-A relationship where one team, work item, or decision cannot progress independently of another.
+Une relation dans laquelle une équipe, un élément de travail ou une décision ne peut pas progresser indépendamment des autres.
 
-### Flow
+### Flux
 
-The movement of value through the organization from idea to delivery and feedback.
+Le mouvement de la valeur à travers l’organisation, de l’idée à la livraison puis au retour d’expérience.
 
-### Governance
+### Gouvernance
 
-Decision-making mechanisms that allocate resources, manage risks, set constraints, and arbitrate priorities.
+Mécanismes de prise de décision qui allouent les ressources, gèrent les risques, fixent les contraintes et arbitrent les priorités.
 
-### Stable coordination unit
+### Unité de coordination stable
 
-A durable group of teams that share a product, domain, platform, customer outcome, or delivery responsibility.
+Un groupe durable d'équipes qui partagent une responsabilité de produit, de domaine, de plateforme, de résultat client ou de livraison.
 
-### WIP
+### En-cours
 
-Work in progress. The amount of work started but not yet completed.
+Travaux en cours. La quantité de travail commencé mais non encore terminé.

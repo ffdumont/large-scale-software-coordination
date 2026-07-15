@@ -1,44 +1,44 @@
-# Annex B — Case Studies
+# Annexe B — Études de cas
 
-> Status: placeholder. Case studies should distinguish direct evidence from interpretation.
+> Statut : section à compléter. Les études de cas doivent distinguer les preuves directes de l’interprétation.
 
-## Case study template
+## Modèle d'étude de cas
 
-For each case:
+Pour chaque cas :
 
-1. Organization.
-2. Sector.
-3. Approximate scale.
-4. Initial operating model.
-5. Motivation for change.
-6. New or simplified operating model.
-7. Results observed.
-8. Evidence type.
-9. Source quality.
-10. Open questions.
+1. Organisation.
+2. Secteur.
+3. Échelle approximative.
+4. Modèle opérationnel initial.
+5. Motivation au changement.
+6. Modèle opérationnel nouveau ou simplifié.
+7. Résultats observés.
+8. Type de preuve.
+9. Qualité des sources.
+10. Questions ouvertes.
 
-## Candidate organizations to investigate
+## Organisations candidates à enquêter
 
-- ING;
-- LEGO;
-- Bosch;
-- Airbus;
-- Ericsson;
-- SAP;
-- Microsoft;
-- Amazon;
-- Google;
-- Netflix;
-- Spotify;
-- JPMorgan Chase;
-- BMW;
-- Siemens;
-- Orange;
-- Renault;
-- Thales.
+- ING ;
+- LEGO ;
+- Bosch ;
+- Airbus ;
+- Ericsson ;
+- SAP ;
+- Microsoft ;
+- Amazon ;
+- Google ;
+- Netflix ;
+- Spotify ;
+- JPMorgan Chase ;
+- BMW ;
+- Siemens ;
+- Orange ;
+- Renault ;
+- Thalès.
 
-## Classification
+## Classement
 
-| Organization | Sector | Trajectory | Evidence status |
+| Organisation | Secteur | Trajectoire | Statut de la preuve |
 |---|---|---|---|
-| TBD | TBD | Continued / simplified / hybridized / abandoned | TBD |
+| À déterminer | À déterminer | Conservée / simplifiée / hybridée / abandonnée | À déterminer |

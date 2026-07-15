@@ -1,34 +1,34 @@
-# Open Questions
+# Questions ouvertes
 
-This file captures open research questions that should not be prematurely converted into conclusions.
+Ce fichier recense les questions de recherche ouvertes qui ne doivent pas être transformées prématurément en conclusions.
 
-## Coordination and scale
+## Coordination et échelle
 
-- From how many teams does explicit cross-team planning become more valuable than its coordination cost?
-- How can the cost of a dependency be measured objectively?
-- What is the relationship between architectural coupling and organizational coordination load?
-- Which forms of coordination remain necessary even with excellent CI/CD and modular architecture?
+- À partir de combien d’équipes la planification explicite inter-équipes devient-elle plus précieuse que son coût de coordination ?
+- Comment mesurer objectivement le coût d'une dépendance ?
+- Quelle est la relation entre le couplage architectural et la charge de coordination organisationnelle ?
+- Quelles formes de coordination restent nécessaires même avec une excellente chaîne CI/CD et une architecture modulaire ?
 
-## Framework simplification
+## Simplification des frameworks
 
-- When companies simplify SAFe, which mechanisms do they usually keep?
-- Do companies that abandon SAFe abandon periodic planning, or only SAFe-specific vocabulary and roles?
-- Which critiques of SAFe are supported by evidence rather than practitioner sentiment?
+- Lorsque les entreprises simplifient SAFe, quels mécanismes conservent-elles généralement ?
+- Les entreprises qui abandonnent SAFe abandonnent-elles la planification périodique, ou uniquement le vocabulaire et les rôles spécifiques à SAFe ?
+- Quelles critiques de SAFe sont étayées par des preuves plutôt que par la seule perception des praticiens ?
 
-## Engineering practices
+## Pratiques d'ingénierie
 
-- To what extent can platform engineering reduce coordination overhead?
-- Which DORA metrics correlate most strongly with reduced cross-team coordination cost?
-- How much organizational structure can be removed when integration is fully automated?
+- Dans quelle mesure l'ingénierie de plateforme peut-elle réduire les coûts de coordination ?
+- Quelles métriques DORA sont le plus fortement corrélées à une réduction des coûts de coordination entre les équipes ?
+- Dans quelle mesure la structure organisationnelle peut-elle être supprimée lorsque l'intégration est entièrement automatisée ?
 
-## Market trends
+## Tendances du marché
 
-- Are large organizations moving away from named frameworks or only rebranding internal hybrids?
-- Are Team Topologies and Product Operating Model practices replacing scaling frameworks, or complementing them?
-- How do regulated industries differ from digital-native organizations in their simplification trajectories?
+- Les grandes organisations s'éloignent-elles des frameworks nommés ou se contentent-elles de renommer les hybrides internes ?
+- Les pratiques issues de Team Topologies et du Product Operating Model remplacent-elles les frameworks de mise à l'échelle ou les complètent-elles ?
+- En quoi les industries réglementées diffèrent-elles des organisations natives du numérique dans leurs trajectoires de simplification ?
 
-## Target organization
+## Organisation cible
 
-- What is the minimal viable set of coordination mechanisms for several hundred developers?
-- Which mechanisms are indispensable only because of current architectural coupling?
-- Which mechanisms should be temporary transition scaffolding rather than permanent operating model elements?
+- Quel est l'ensemble minimal viable de mécanismes de coordination pour plusieurs centaines de développeurs ?
+- Quels mécanismes sont indispensables uniquement en raison du couplage architectural actuel ?
+- Quels mécanismes devraient servir de soutien transitoire plutôt que devenir des éléments permanents du modèle opérationnel ?

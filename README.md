@@ -1,62 +1,68 @@
-# Large Scale Software Coordination
+# Large-Scale Software Coordination
 
-## Purpose
+Strategic paper on designing a simplified software-development organization for several hundred developers, using first-principles reasoning rather than selecting a branded scaling framework.
 
-This repository contains a strategic paper on how to design a simplified software development organization for a program involving several hundred developers.
+The paper is published in two synchronized editions:
 
-The paper deliberately avoids starting from existing scaling frameworks such as SAFe, LeSS, Nexus, Scrum of Scrums, Team Topologies, Flight Levels, or others. Instead, it uses a first-principles approach:
+- [English edition](https://ffdumont.github.io/large-scale-software-coordination/en/)
+- [Édition française](https://ffdumont.github.io/large-scale-software-coordination/fr/)
 
-1. identify the fundamental coordination problems that emerge at scale;
-2. derive universal principles from software engineering, Lean, DevOps, systems thinking, and organization theory;
-3. analyze frameworks as possible implementations of those principles;
-4. decompose SAFe into principles, mechanisms, ceremonies, roles, and vocabulary;
-5. reconstruct a minimal, pragmatic organization adapted to the target context.
+## Editorial architecture
 
-The goal is not to select a framework, but to preserve what is necessary, remove what is superfluous, and remain independent from any branded methodology.
+French is the canonical editorial source. The original chapter files remain at the repository root and in `annexes/`; the corresponding English files use the same names under `en/`. `paper.json` is the single manifest that defines document pairs and reading order.
 
-## Working title
-
-**Rethinking Large-Scale Software Coordination: A First-Principles Approach Beyond Agile Frameworks**
-
-French working title:
-
-**Repenser la coordination du développement logiciel à grande échelle : une approche par premiers principes au-delà des frameworks Agile**
-
-## Repository structure
+Each English file starts with the SHA-256 fingerprint of its French source. CI checks this fingerprint as well as heading, table, and Mermaid-diagram structure. A French edit therefore makes the translation check fail until the corresponding English document has been reviewed and marked synchronized.
 
 ```text
 .
-├── 00-executive-summary.md
+├── 00-executive-summary.md       # canonical French source
 ├── 01-fundamental-problems.md
-├── 02-universal-principles.md
-├── 03-framework-analysis.md
-├── 04-safe-analysis.md
-├── 05-market-trends-2025-2026.md
-├── 06-first-principles-reconstruction.md
-├── 07-target-organization.md
-├── 08-conclusion.md
+├── …
 ├── annexes/
-│   ├── A-bibliography.md
-│   ├── B-case-studies.md
-│   ├── C-evidence-matrix.md
-│   └── D-glossary.md
-└── figures/
-    └── .gitkeep
+├── en/                           # English mirror
+│   ├── 00-executive-summary.md
+│   ├── …
+│   └── annexes/
+├── paper.json                    # pairs and reading order
+├── scripts/
+│   ├── check_translations.py
+│   ├── update_translation_hashes.py
+│   └── build_site.py
+└── .github/workflows/pages.yml
 ```
 
-## Methodological stance
+## Synchronizing a change
 
-The paper distinguishes systematically between:
+1. Edit the French chapter.
+2. Apply the same semantic change to its English counterpart.
+3. After reviewing both versions, refresh that chapter’s source fingerprint:
 
-- established facts;
-- empirical evidence;
-- experience reports;
-- practitioner opinions;
-- vendor marketing;
-- working hypotheses.
+   ```shell
+   python scripts/update_translation_hashes.py fundamental-problems
+   ```
 
-Important claims should be connected to explicit evidence whenever possible.
+4. Verify the complete corpus:
 
-## Central research question
+   ```shell
+   python scripts/check_translations.py
+   ```
+
+The accepted chapter identifiers are listed in `paper.json`. Passing no identifier refreshes every fingerprint and should be reserved for a deliberate full-corpus review.
+
+## Site and GitHub Pages
+
+The Pages workflow validates both editions, builds a static site from the Markdown sources, and deploys only from `main`. Pull requests run the same build without deploying. This means there is no third, generated content tree to keep synchronized in Git.
+
+To build locally:
+
+```shell
+python -m pip install -r requirements-site.txt
+python scripts/check_translations.py
+python scripts/build_site.py
+```
+
+The generated `_site/` directory is ignored by Git.
+
+## Research question
 
 > What coordination mechanisms are objectively necessary for a software organization of several hundred developers, and what is the simplest viable organizational architecture that preserves alignment, autonomy, quality, visibility, and adaptability?

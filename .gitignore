@@ -1,0 +1,3 @@
+_site/
+.translation-cache.json
+__pycache__/

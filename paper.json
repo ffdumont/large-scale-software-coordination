@@ -1,0 +1,26 @@
+{
+  "title": {
+    "fr": "Repenser la coordination du développement logiciel à grande échelle",
+    "en": "Rethinking Large-Scale Software Coordination"
+  },
+  "subtitle": {
+    "fr": "Une approche par premiers principes au-delà des frameworks Agile",
+    "en": "A First-Principles Approach Beyond Agile Frameworks"
+  },
+  "chapters": [
+    { "id": "executive-summary", "fr": "00-executive-summary.md", "en": "en/00-executive-summary.md" },
+    { "id": "fundamental-problems", "fr": "01-fundamental-problems.md", "en": "en/01-fundamental-problems.md" },
+    { "id": "universal-principles", "fr": "02-universal-principles.md", "en": "en/02-universal-principles.md" },
+    { "id": "framework-analysis", "fr": "03-framework-analysis.md", "en": "en/03-framework-analysis.md" },
+    { "id": "safe-analysis", "fr": "04-safe-analysis.md", "en": "en/04-safe-analysis.md" },
+    { "id": "market-trends-2025-2026", "fr": "05-market-trends-2025-2026.md", "en": "en/05-market-trends-2025-2026.md" },
+    { "id": "first-principles-reconstruction", "fr": "06-first-principles-reconstruction.md", "en": "en/06-first-principles-reconstruction.md" },
+    { "id": "target-organization", "fr": "07-target-organization.md", "en": "en/07-target-organization.md" },
+    { "id": "conclusion", "fr": "08-conclusion.md", "en": "en/08-conclusion.md" },
+    { "id": "open-questions", "fr": "99-open-questions.md", "en": "en/99-open-questions.md" },
+    { "id": "bibliography", "fr": "annexes/A-bibliography.md", "en": "en/annexes/A-bibliography.md" },
+    { "id": "case-studies", "fr": "annexes/B-case-studies.md", "en": "en/annexes/B-case-studies.md" },
+    { "id": "evidence-matrix", "fr": "annexes/C-evidence-matrix.md", "en": "en/annexes/C-evidence-matrix.md" },
+    { "id": "glossary", "fr": "annexes/D-glossary.md", "en": "en/annexes/D-glossary.md" }
+  ]
+}

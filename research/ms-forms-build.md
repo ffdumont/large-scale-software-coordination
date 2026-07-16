@@ -97,10 +97,10 @@ Design / UX work has a structured place to be shared and challenged
 
 All **Text (long), optional**:
 
-- **Q9** 🔪 `Name one recurring meeting, role, or artifact that, if it disappeared tomorrow, no one would miss. Why?`
-- **Q10** 🛡️ `Name one thing in how we coordinate that genuinely works and must be preserved.`
+- **Q9** 🛡️ `Name up to three things in how we coordinate that genuinely work and must be preserved.`
+- **Q10** 🔧 `Name up to three things we should change, stop, or drop. Why?`
 - **Q11** 🔬 `Describe the last time a dependency or a priority change blocked you. What actually happened?`
-- **Q12** ✨ `If you could change only one thing about how we coordinate, what would it be?`
+- **Q12** ✨ `Magic wand: if you could change only one thing about how we coordinate, what would it be?`
 - **Q13** 🗒️ `Anything about how we coordinate that these questions didn't let you say?`
 
 ---

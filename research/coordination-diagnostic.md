@@ -85,10 +85,10 @@ Circle one number in each of the two columns. `N/A` = not applicable · `?` = do
 
 ### Part D — In your own words
 
-1. 🔪 **Cut** — Name **one** recurring meeting, role, or artifact that, if it disappeared tomorrow, **no one would miss**. Why?
-2. 🛡️ **Keep** — Name **one** thing in how we coordinate that **genuinely works and must be preserved**.
+1. 🛡️ **Keep** — Name up to **three** things in how we coordinate that **genuinely work and must be preserved**.
+2. 🔧 **Change** — Name up to **three** things we should **change, stop, or drop**. Why?
 3. 🔬 **Diagnose** — Describe the **last time** a dependency or a priority change blocked you. What actually happened?
-4. ✨ *(optional)* **One change** — If you could change only **one** thing about how we coordinate, what would it be?
+4. ✨ **Magic wand** — If you could change only **one** thing about how we coordinate, what would it be?
 5. 🗒️ *(optional)* **Anything else** — Anything about how we coordinate that these questions didn't let you say?
 
 ### Part E — Follow-up (optional)

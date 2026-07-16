@@ -20,7 +20,7 @@
 
 ## 1. Methodological note (for co-reviewers — not shown to respondents)
 
-This instrument is designed so that a known skeptic co-reviewing it cannot call it a push poll. The design rests on five research techniques:
+This instrument is designed so that no one can fairly call it a push poll. The design rests on five research techniques:
 
 - **Jobs-to-be-Done** — we never ask "do you like ceremony X?". We measure the *function* people rely on it for. Function and form are scored separately.
 - **Importance–Performance Analysis (IPA)** — every coordination function gets two independent scores: how *important* it is, and how *well it works today*. The gap between them, not any opinion about a framework, drives the conclusions.
@@ -32,7 +32,6 @@ This instrument is designed so that a known skeptic co-reviewing it cannot call 
 2. *Importance* and *current performance* are measured as separate questions.
 3. Scales carry no leading adjectives.
 4. At least one "what works, keep it" question balances the "what to cut" questions.
-5. The full instrument is reviewed by **≥1 named skeptic** before launch (sign-off in §5).
 
 The twelve functions below map to the coordination mechanisms argued as necessary in the paper (ch. 6–8) and to the five clusters of the existing role-based retrospective. That mapping is internal; respondents see only plain-language functions.
 
@@ -139,8 +138,3 @@ Circle one number in each of the two columns. `N/A` = not applicable · `?` = do
 - [ ] At least one "what works — keep it" question is present.
 - [ ] Scales carry no leading adjectives.
 - [ ] Respondent intro states change is coming **and** that no option is decided.
-- [ ] Reviewed by at least one **named skeptic** (ideally from the kill-SAFe camp) who agrees it is not a push poll.
-
-**Skeptic co-reviewer sign-off:** ______________________  Date: __________
-
-*This sign-off is the single most important line in the document for the instrument's credibility — and for yours.*

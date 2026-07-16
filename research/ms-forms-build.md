@@ -120,12 +120,6 @@ No
 
 ---
 
-## Before you hit Send — the one non-negotiable
-
-Run the §5 pre-launch checklist from `coordination-diagnostic.md`, especially the **named-skeptic sign-off**. A neutral instrument that hasn't been vetted by someone from the "kill-SAFe" camp is still, politically, "your" survey. Get the sign-off first.
-
----
-
 ## Shortcut option — draft with Copilot in Forms
 
 If your tenant has Copilot in Forms ("New Form → Draft with Copilot"), paste the prompt below to get a first draft, **then fix it against this spec** — Copilot will not reliably produce the two separate Likert grids or hold the neutral wording, so treat its output as scaffolding only.

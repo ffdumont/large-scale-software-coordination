@@ -1,3 +1,11 @@
 _site/
 .translation-cache.json
 __pycache__/
+
+# Documents personnels et internes — ne pas publier (dépôt public)
+journal/
+research/leadership-briefing.md
+research/mid-year-results-wording.md
+
+# Fichiers de verrou Office
+~$*

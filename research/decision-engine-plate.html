@@ -1,0 +1,497 @@
+<title>The decision engine — coordination diagnostic</title>
+
+<style>
+  :root {
+    --ground:      #EFF1F3;
+    --field:       #FAFBFC;
+    --ink:         #10161B;
+    --ink-2:       #4C5964;
+    --ink-3:       #7C8894;
+    --rule:        #C8D0D7;
+    --rule-heavy:  #10161B;
+
+    --keep:        #2F6B4F;
+    --fix:         #B0432B;
+    --cut:         #6F7C88;
+    --simplify:    #A67722;
+
+    --keep-tint:     #EDF4F0;
+    --fix-tint:      #FAEEE9;
+    --cut-tint:      #F2F4F6;
+    --simplify-tint: #F8F2E5;
+
+    --hatch: rgba(16, 22, 27, .055);
+
+    --font-display: "Arial Narrow", "Helvetica Neue Condensed", "Liberation Sans Narrow", "Segoe UI", system-ui, sans-serif;
+    --font-body: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: Consolas, "SF Mono", ui-monospace, "Liberation Mono", Menlo, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground:      #12171A;
+      --field:       #191F23;
+      --ink:         #E6EAED;
+      --ink-2:       #A3AFB8;
+      --ink-3:       #78858F;
+      --rule:        #2E383F;
+      --rule-heavy:  #7A8791;
+
+      --keep:        #6BB68C;
+      --fix:         #E0765A;
+      --cut:         #93A0AB;
+      --simplify:    #D6A64A;
+
+      --keep-tint:     #17251E;
+      --fix-tint:      #261A16;
+      --cut-tint:      #1B2126;
+      --simplify-tint: #241E12;
+
+      --hatch: rgba(230, 234, 237, .05);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:      #12171A;
+    --field:       #191F23;
+    --ink:         #E6EAED;
+    --ink-2:       #A3AFB8;
+    --ink-3:       #78858F;
+    --rule:        #2E383F;
+    --rule-heavy:  #7A8791;
+
+    --keep:        #6BB68C;
+    --fix:         #E0765A;
+    --cut:         #93A0AB;
+    --simplify:    #D6A64A;
+
+    --keep-tint:     #17251E;
+    --fix-tint:      #261A16;
+    --cut-tint:      #1B2126;
+    --simplify-tint: #241E12;
+
+    --hatch: rgba(230, 234, 237, .05);
+  }
+
+  :root[data-theme="light"] {
+    --ground:      #EFF1F3;
+    --field:       #FAFBFC;
+    --ink:         #10161B;
+    --ink-2:       #4C5964;
+    --ink-3:       #7C8894;
+    --rule:        #C8D0D7;
+    --rule-heavy:  #10161B;
+
+    --keep:        #2F6B4F;
+    --fix:         #B0432B;
+    --cut:         #6F7C88;
+    --simplify:    #A67722;
+
+    --keep-tint:     #EDF4F0;
+    --fix-tint:      #FAEEE9;
+    --cut-tint:      #F2F4F6;
+    --simplify-tint: #F8F2E5;
+
+    --hatch: rgba(16, 22, 27, .055);
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .plate {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: clamp(20px, 3.4vw, 44px) clamp(16px, 3.4vw, 40px) clamp(28px, 4vw, 52px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(20px, 2.6vw, 32px);
+  }
+
+  /* ---------- head ---------- */
+
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px 28px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--rule-heavy);
+  }
+
+  .head-main { max-width: 62ch; }
+
+  h1 {
+    font-family: var(--font-display);
+    font-stretch: condensed;
+    font-size: clamp(29px, 4.4vw, 46px);
+    font-weight: 700;
+    letter-spacing: .012em;
+    line-height: 1.04;
+    text-wrap: balance;
+    margin-bottom: 8px;
+  }
+
+  .lede {
+    font-size: clamp(14px, 1.35vw, 17px);
+    color: var(--ink-2);
+    max-width: 60ch;
+  }
+
+  .designation {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: .05em;
+    color: var(--ink-3);
+    text-align: right;
+    line-height: 1.7;
+    white-space: nowrap;
+  }
+
+  /* ---------- matrix ---------- */
+
+  .chart {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 10px;
+  }
+
+  .axis-y {
+    grid-column: 1;
+    grid-row: 1;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 2px 0;
+  }
+
+  .axis-x {
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .axis-name {
+    font-family: var(--font-display);
+    font-stretch: condensed;
+    font-weight: 700;
+    font-size: clamp(13px, 1.25vw, 16px);
+    letter-spacing: .17em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .axis-end {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: .03em;
+    color: var(--ink-3);
+  }
+
+  .matrix {
+    grid-column: 2;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    aspect-ratio: 1.52;
+    min-height: 340px;
+    border: 2px solid var(--rule-heavy);
+    background: var(--rule-heavy);
+    gap: 2px;
+  }
+
+  .q {
+    position: relative;
+    background: var(--field);
+    padding: clamp(14px, 1.7vw, 22px);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    overflow: hidden;
+  }
+
+  /* the top row is the load-bearing row — hatched, as on a survey drawing */
+  .q--load::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      var(--hatch) 0 1px,
+      transparent 1px 9px
+    );
+    pointer-events: none;
+  }
+
+  .q > * { position: relative; }
+
+  .coord {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .verdict {
+    font-family: var(--font-display);
+    font-stretch: condensed;
+    font-weight: 700;
+    font-size: clamp(30px, 4.6vw, 52px);
+    line-height: .96;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    margin-top: auto;
+  }
+
+  .gloss {
+    font-size: clamp(13px, 1.25vw, 15.5px);
+    color: var(--ink-2);
+    max-width: 34ch;
+  }
+
+  .gloss em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .q--fix    { background: var(--fix-tint); }
+  .q--keep   { background: var(--keep-tint); }
+  .q--cut    { background: var(--cut-tint); }
+  .q--simpl  { background: var(--simplify-tint); }
+
+  .q--fix   .verdict { color: var(--fix); }
+  .q--keep  .verdict { color: var(--keep); }
+  .q--cut   .verdict { color: var(--cut); }
+  .q--simpl .verdict { color: var(--simplify); }
+
+  .field-note {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: .02em;
+    color: var(--ink-3);
+    text-align: center;
+    margin-top: 2px;
+  }
+
+  /* ---------- reading notes ---------- */
+
+  .notes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: clamp(14px, 1.8vw, 24px);
+    padding-top: clamp(18px, 2.2vw, 26px);
+    border-top: 1px solid var(--rule);
+  }
+
+  .note-title {
+    font-family: var(--font-display);
+    font-stretch: condensed;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .17em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .note p {
+    font-size: 14.5px;
+    color: var(--ink-2);
+  }
+
+  .note p + p { margin-top: 7px; }
+
+  .note strong { color: var(--ink); font-weight: 600; }
+
+  .swatch {
+    display: inline-block;
+    width: .62em;
+    height: .62em;
+    margin-right: .35em;
+    vertical-align: baseline;
+  }
+
+  .swatch--cut  { background: var(--cut); }
+  .swatch--fix  { background: var(--fix); }
+
+  /* ---------- title block ---------- */
+
+  .titleblock {
+    align-self: flex-end;
+    width: 100%;
+    max-width: 620px;
+    border: 1px solid var(--rule-heavy);
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    line-height: 1.55;
+  }
+
+  .tb-row {
+    display: grid;
+    grid-template-columns: 108px minmax(0, 1fr);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .tb-row:last-child { border-bottom: 0; }
+
+  .tb-key {
+    padding: 7px 10px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    border-right: 1px solid var(--rule);
+  }
+
+  .tb-val {
+    padding: 7px 10px;
+    color: var(--ink-2);
+  }
+
+  /* ---------- narrow screens ---------- */
+
+  @media (max-width: 620px) {
+    .matrix { aspect-ratio: auto; }
+    .q { min-height: 168px; }
+    .designation { text-align: left; }
+  }
+
+  /* ---------- print ---------- */
+
+  @media print {
+    :root {
+      --ground: #fff; --field: #fff;
+      --ink: #000; --ink-2: #333; --ink-3: #666;
+      --rule: #bbb; --rule-heavy: #000;
+      --keep-tint: #fff; --fix-tint: #fff; --cut-tint: #fff; --simplify-tint: #fff;
+      --hatch: rgba(0, 0, 0, .07);
+    }
+    @page { size: landscape; margin: 12mm; }
+    .plate { padding: 0; gap: 18px; }
+    .matrix { min-height: 0; aspect-ratio: 1.7; }
+    .notes, .titleblock { break-inside: avoid; }
+  }
+</style>
+
+<div class="plate">
+
+  <header class="head">
+    <div class="head-main">
+      <h1>Two scores per function. The gap decides.</h1>
+      <p class="lede">
+        Each of the twelve coordination functions is rated twice, independently — how
+        <em>important</em> it is, and how well it <em>works today</em>. Neither number means
+        anything alone. Where they land together is the recommendation.
+      </p>
+    </div>
+    <div class="designation">
+      COORDINATION MODEL DIAGNOSTIC<br>
+      IMPORTANCE &times; PERFORMANCE &middot; PLATE 1/1
+    </div>
+  </header>
+
+  <div class="chart">
+
+    <div class="axis-y">
+      <span class="axis-end">1 &middot; nice-to-have</span>
+      <span class="axis-name">Importance</span>
+      <span class="axis-end">5 &middot; essential</span>
+    </div>
+
+    <div class="matrix">
+
+      <div class="q q--fix q--load">
+        <span class="coord">Important &middot; broken</span>
+        <span class="verdict">Fix</span>
+        <p class="gloss">Load-bearing, and it is failing. <em>Protect the function, change the form.</em></p>
+      </div>
+
+      <div class="q q--keep q--load">
+        <span class="coord">Important &middot; working</span>
+        <span class="verdict">Keep</span>
+        <p class="gloss">Load-bearing and holding. <em>Do not touch it.</em></p>
+      </div>
+
+      <div class="q q--cut">
+        <span class="coord">Not important &middot; broken</span>
+        <span class="verdict">Cut</span>
+        <p class="gloss">Overhead nobody relies on. <em>The safe early win.</em></p>
+      </div>
+
+      <div class="q q--simpl">
+        <span class="coord">Not important &middot; working</span>
+        <span class="verdict">Simplify</span>
+        <p class="gloss">Over-served — we are paying more than the function is worth. <em>Trim the effort.</em></p>
+      </div>
+
+    </div>
+
+    <div class="axis-x">
+      <span class="axis-end">1 &middot; very poorly</span>
+      <span class="axis-name">Works today</span>
+      <span class="axis-end">5 &middot; very well</span>
+    </div>
+
+  </div>
+
+  <p class="field-note">
+    Hatched row = load-bearing. Twelve functions plot onto this field once the survey closes — one point each.
+  </p>
+
+  <section class="notes">
+
+    <div class="note">
+      <h2 class="note-title">Cost overlay</h2>
+      <p>A third question asks which two or three functions <strong>cost more than they are worth</strong>. It moves points, it does not create them.</p>
+      <p><span class="swatch swatch--cut"></span>Not important <strong>and</strong> costly &rarr; cut first.</p>
+      <p><span class="swatch swatch--fix"></span>Important <strong>and</strong> costly &rarr; fix it. Do not kill it.</p>
+    </div>
+
+    <div class="note">
+      <h2 class="note-title">Plotted per role</h2>
+      <p>The same field is drawn for each role and each tenure band.</p>
+      <p><strong>Where roles disagree, the disagreement is the finding.</strong> Teams scoring their own decision autonomy at 2 while managers score it at 4 is a diagnosis in itself — and usually more actionable than either number.</p>
+    </div>
+
+    <div class="note">
+      <h2 class="note-title">What it never asks</h2>
+      <p>No scored item names a <strong>framework, ceremony, role or tool</strong>. Not one.</p>
+      <p>Every item describes a function — the job being done. <strong>Function is what we cannot lose without noticing. Form is what is on the table.</strong></p>
+    </div>
+
+  </section>
+
+  <div class="titleblock">
+    <div class="tb-row">
+      <div class="tb-key">Instrument</div>
+      <div class="tb-val">Coordination Model Diagnostic &mdash; anonymous, ~8&ndash;10 min, analysed by role</div>
+    </div>
+    <div class="tb-row">
+      <div class="tb-key">Items</div>
+      <div class="tb-val">12 coordination functions &times; 2 independent ratings</div>
+    </div>
+    <div class="tb-row">
+      <div class="tb-key">Output</div>
+      <div class="tb-val">This field, populated &middot; role-divergence table &middot; ranked keep / fix / cut list</div>
+    </div>
+    <div class="tb-row">
+      <div class="tb-key">Status</div>
+      <div class="tb-val">Blank &mdash; no option decided in advance</div>
+    </div>
+  </div>
+
+</div>

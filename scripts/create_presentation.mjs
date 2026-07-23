@@ -4,8 +4,8 @@ import { Presentation, PresentationFile } from "@oai/artifact-tool";
 
 const root = "C:/dev/large-scale-software-coordination";
 const outputDir = path.join(root, "outputs");
-const previewDir = path.join(outputDir, "coordination-presentation-preview");
-const finalPptx = path.join(outputDir, "coordination-logicielle-grande-echelle.pptx");
+const previewDir = path.join(outputDir, "large-scale-coordination-presentation-preview");
+const finalPptx = path.join(outputDir, "large-scale-software-coordination-presentation-en.pptx");
 
 const W = 1280;
 const H = 720;
@@ -61,7 +61,7 @@ function addPill(slide, label, x, y, w, color = ink) {
 
 function addFooter(slide, n) {
   addRule(slide, M, 650, W - 2 * M, rule, 1);
-  addText(slide, "Repenser la coordination logicielle a grande echelle", M, 662, 760, 24, {
+  addText(slide, "Rethinking large-scale software coordination", M, 662, 760, 24, {
     size: 13,
     color: muted,
   });
@@ -123,14 +123,14 @@ function addChapterSlide(presentation, cfg, n) {
 function addCover(presentation) {
   const slide = presentation.slides.add();
   slide.background.fill = "#FFFFFF";
-  addText(slide, "PRESENTATION DE 45 MINUTES", M, 52, 420, 28, {
+  addText(slide, "45-MINUTE PRESENTATION", M, 52, 420, 28, {
     size: 14,
     bold: true,
     color: muted,
   });
   addText(
     slide,
-    "Repenser la coordination logicielle a grande echelle",
+    "Rethinking large-scale software coordination",
     M,
     130,
     850,
@@ -139,7 +139,7 @@ function addCover(presentation) {
   );
   addText(
     slide,
-    "Une lecture par premiers principes pour simplifier sans perdre les mecanismes indispensables.",
+    "A first-principles reading for simplifying without losing the mechanisms that scale requires.",
     M,
     342,
     760,
@@ -152,145 +152,145 @@ function addCover(presentation) {
     fill: panel,
     line: { style: "solid", fill: panel, width: 0 },
   });
-  ["Problemes", "Principes", "Mecanismes", "Modele cible"].forEach((label, i) => {
+  ["Problems", "Principles", "Mechanisms", "Target model"].forEach((label, i) => {
     addRule(slide, 954, 176 + i * 76, 88, i === 0 ? accent : ink, 6);
     addText(slide, label, 954, 188 + i * 76, 150, 32, { size: 20, bold: i === 0 });
   });
   addFooter(slide, 1);
   slide.speakerNotes.textFrame.setText(
-    "Script, 2 minutes. Ouvrir sur la tension centrale : on veut simplifier les organisations logicielles a grande echelle, mais on ne peut pas supprimer les problemes que les structures traitaient. Preciser que la presentation suit le papier en huit chapitres. Le fil rouge est simple : partir des contraintes de l'echelle, identifier les principes, decomposer les frameworks, puis reconstruire un modele minimal. Annoncer que l'objectif n'est pas de choisir entre SAFe et anti-SAFe, mais de distinguer les mecanismes utiles des formes devenues couteuses.",
+    "Script, 2 minutes. Open with the core tension: we want to simplify large-scale software organizations, but we cannot remove the problems that their structures were trying to solve. Explain that the presentation follows the paper in eight chapters. The throughline is simple: start from the constraints of scale, identify principles, decompose frameworks, then reconstruct a minimal operating model. Make clear that the goal is not to choose between SAFe and anti-SAFe, but to distinguish useful mechanisms from forms that have become costly.",
   );
   slide.speakerNotes.setVisible(true);
 }
 
 const slides = [
   {
-    chapter: "Chapitre 1",
-    title: "L'echelle transforme un probleme d'equipe en probleme de systeme",
-    subtitle: "Le point de depart n'est pas la methode, mais les contraintes qui apparaissent quand plusieurs centaines de developpeurs travaillent sur des systemes interdépendants.",
-    tag: "Diagnostic initial",
-    claim: "Une organisation peut retirer un framework ; elle ne peut pas retirer les problemes de coordination.",
+    chapter: "Chapter 1",
+    title: "Scale turns a team problem into a system problem",
+    subtitle: "The starting point is not the method, but the constraints that appear when hundreds of developers work on interdependent systems.",
+    tag: "Initial diagnosis",
+    claim: "An organization can remove a framework; it cannot remove the coordination problems.",
     points: [
-      "Les interactions, le couplage et l'incertitude croissent plus vite que la taille des equipes.",
-      "Les cinq complexites clefs sont structurelle, coordination, decisionnelle, operationnelle, cognitive et sociale.",
-      "Le bon niveau de coordination depend du couplage, des risques et de la maturite technique.",
+      "Interactions, coupling and uncertainty grow faster than team size.",
+      "The five key complexities are structural, coordination, decision, operational, cognitive and social.",
+      "The right level of coordination depends on coupling, risk and technical maturity.",
     ],
-    rightTitle: "Signaux faibles",
-    rightItems: ["Attentes entre equipes", "Dependances tardives", "Experts satures", "Escalades repetees"],
+    rightTitle: "Warning signs",
+    rightItems: ["Teams waiting", "Late dependencies", "Overloaded experts", "Repeated escalations"],
     notes:
-      "Script, 5 minutes. Commencer par faire sentir le changement d'echelle : huit personnes peuvent se coordonner par contexte partage ; plusieurs centaines ne le peuvent plus. Insister sur le fait que le probleme n'est pas d'abord methodologique. Il est systemique : plus d'acteurs, plus de relations possibles, plus de decisions locales qui ont des effets globaux. Presenter les cinq familles de complexite comme la grille de lecture de tout le papier. Donner deux exemples concrets : une architecture couplee cree des reunions ; un portefeuille surcharge cree des dependances et de l'attente. Transition : si les problemes sont systemiques, il faut chercher des principes avant de choisir des frameworks.",
+      "Script, 5 minutes. Start by making the shift in scale tangible: eight people can coordinate through shared context; several hundred people cannot. Emphasize that the problem is not primarily methodological. It is systemic: more actors, more possible relationships, and more local decisions with global effects. Present the five families of complexity as the reading grid for the whole paper. Give two concrete examples: coupled architecture creates meetings; an overloaded portfolio creates dependencies and waiting time. Transition: if the problems are systemic, we need principles before we choose frameworks.",
   },
   {
-    chapter: "Chapitre 2",
-    title: "Les principes universels se situent sous les ceremonies",
-    subtitle: "Une pratique visible n'est utile que si elle met en oeuvre un principe necessaire face a un probleme reel.",
-    tag: "Principes",
-    claim: "Le papier separe trois niveaux : probleme, principe, mecanisme.",
+    chapter: "Chapter 2",
+    title: "Universal principles sit underneath the ceremonies",
+    subtitle: "A visible practice is useful only when it applies a necessary principle to a real problem.",
+    tag: "Principles",
+    claim: "The paper separates three levels: problem, principle and mechanism.",
     points: [
-      "Aligner explicitement sans transformer l'organisation en machine d'execution centrale.",
-      "Donner de l'autonomie dans des frontieres d'ownership, d'architecture et de decision.",
-      "Limiter le WIP, rendre le flux visible, integrer souvent et apprendre continuellement.",
+      "Create explicit alignment without turning the organization into a centralized execution machine.",
+      "Grant autonomy inside clear ownership, architecture and decision boundaries.",
+      "Limit WIP, make flow visible, integrate often and keep learning continuously.",
     ],
-    rightTitle: "Question utile",
-    rightItems: ["Quel probleme avons-nous ?", "Quel principe repond au probleme ?", "Quel mecanisme coute le moins ?", "Quel risque si on retire ?"],
+    rightTitle: "Useful question",
+    rightItems: ["What problem do we have?", "Which principle applies?", "Which mechanism costs least?", "What risk if removed?"],
     notes:
-      "Script, 5 minutes. Expliquer que le chapitre 2 construit le vocabulaire analytique. Un principe n'est ni une ceremonie ni un role. Par exemple, limiter le travail en cours est un principe ; une revue de portefeuille ou une limite WIP sont des mecanismes ; le nom donne par un framework est une implementation. Parcourir les principes les plus importants : alignement explicite, autonomie avec frontieres, reduction des dependances, visibilite du flux, feedback rapide, qualite integree, decision au bon niveau. Insister sur les tensions : alignement contre autonomie, standardisation contre adaptation, feedback contre gouvernance. Transition : les frameworks peuvent maintenant etre lus comme des assemblages de ces principes.",
+      "Script, 5 minutes. Explain that chapter 2 builds the analytical vocabulary. A principle is not a ceremony or a role. For example, limiting work in progress is a principle; a portfolio review or a WIP limit is a mechanism; the name given by a framework is a specific implementation. Walk through the most important principles: explicit alignment, autonomy with boundaries, dependency reduction, flow visibility, fast feedback, built-in quality and decision-making at the right level. Stress the tensions: alignment versus autonomy, standardization versus adaptation, feedback versus governance. Transition: frameworks can now be read as assemblies of these principles.",
   },
   {
-    chapter: "Chapitre 3",
-    title: "Les frameworks sont des bibliotheques de mecanismes, pas des reponses totales",
-    subtitle: "SAFe, LeSS, Nexus, Kanban, Team Topologies, Flight Levels ou Shape Up ne partent pas du meme diagnostic.",
-    tag: "Lecture comparative",
-    claim: "La bonne comparaison n'est pas 'quel framework est meilleur ?', mais 'quel compromis traite quel probleme ?'.",
+    chapter: "Chapter 3",
+    title: "Frameworks are mechanism libraries, not total answers",
+    subtitle: "SAFe, LeSS, Nexus, Kanban, Team Topologies, Flight Levels and Shape Up do not start from the same diagnosis.",
+    tag: "Comparative reading",
+    claim: "The right comparison is not which framework is best, but which compromise treats which problem.",
     points: [
-      "SAFe explicite la coordination d'entreprise, mais peut institutionnaliser les dependances.",
-      "LeSS et Team Topologies cherchent davantage a reduire la complexite structurelle.",
-      "Kanban et Flight Levels rendent le flux et la capacite visibles, mais exigent de vrais arbitrages.",
+      "SAFe makes enterprise coordination explicit, but can institutionalize dependencies.",
+      "LeSS and Team Topologies focus more on reducing structural complexity.",
+      "Kanban and Flight Levels make flow and capacity visible, but require real arbitration.",
     ],
-    rightTitle: "Patterns communs",
-    rightItems: ["Rendre visible", "Creer une cadence", "Definir des frontieres", "Arbitrer la capacite"],
+    rightTitle: "Common patterns",
+    rightItems: ["Make visible", "Create cadence", "Define boundaries", "Arbitrate capacity"],
     notes:
-      "Script, 5 minutes. Reintroduire les frameworks apres les principes. Expliquer que chaque approche met le projecteur sur un type de probleme : synchronisation multi-equipes pour SAFe ou Nexus, simplification organisationnelle pour LeSS, design socio-technique pour Team Topologies, flux pour Kanban et Flight Levels. Le chapitre ne classe pas les frameworks ; il les decompose. Mettre l'accent sur les anti-patterns : adoption par vocabulaire, reporting deguise en transparence, autonomie sans droits de decision, simplification sans mecanisme de remplacement. Transition : comme SAFe est souvent le cas le plus lourd et le plus discute, le chapitre suivant le decompose plus finement.",
+      "Script, 5 minutes. Reintroduce frameworks after the principles. Explain that each approach highlights a type of problem: multi-team synchronization for SAFe or Nexus, organizational simplification for LeSS, socio-technical design for Team Topologies, flow for Kanban and Flight Levels. The chapter does not rank frameworks; it decomposes them. Emphasize the adoption anti-patterns: adoption by vocabulary, reporting disguised as transparency, autonomy without decision rights, simplification without a replacement mechanism. Transition: because SAFe is often the heaviest and most debated case, the next chapter decomposes it in more detail.",
   },
   {
-    chapter: "Chapitre 4",
-    title: "SAFe doit etre juge mecanisme par mecanisme",
-    subtitle: "Sa force est de rendre explicites des problemes reels ; sa faiblesse est de pouvoir transformer cette explicitation en lourdeur.",
-    tag: "Decomposition SAFe",
-    claim: "Il faut conserver les fonctions utiles, simplifier les formes, et rendre le vocabulaire optionnel.",
+    chapter: "Chapter 4",
+    title: "SAFe should be judged mechanism by mechanism",
+    subtitle: "Its strength is making real problems explicit; its weakness is that this explicitness can turn into overhead.",
+    tag: "SAFe decomposition",
+    claim: "Keep useful functions, simplify forms and make the vocabulary optional.",
     points: [
-      "A garder sous une forme ou une autre : alignement, dependances, portefeuille, WIP, qualite, decisions.",
-      "A adapter : duree des cycles, roles dedies, taille des unites, profondeur des artefacts.",
-      "A supprimer : ceremonie sans decision, role sans mandat, reporting redondant, jargon de conformite.",
+      "Keep in some form: alignment, dependencies, portfolio, WIP, quality and decisions.",
+      "Adapt: cycle length, dedicated roles, unit size and artifact depth.",
+      "Remove: ceremonies without decisions, roles without mandates, redundant reporting and compliance jargon.",
     ],
-    rightTitle: "Critere de tri",
-    rightItems: ["Produit-il une decision ?", "Reduit-il le WIP ?", "Clarifie-t-il l'ownership ?", "Accelere-t-il le feedback ?"],
+    rightTitle: "Sorting criterion",
+    rightItems: ["Does it create a decision?", "Does it reduce WIP?", "Does it clarify ownership?", "Does it speed feedback?"],
     notes:
-      "Script, 5 minutes. Presenter SAFe comme une bibliotheque integree de mecanismes. Ne pas le caricaturer : il traite de vrais problemes de grandes organisations, notamment l'alignement, les dependances, le portefeuille et l'integration. Mais il devient couteux lorsque les ceremonies remplacent les decisions, lorsque le vocabulaire devient un marqueur de conformite, ou lorsque la planification gere les dependances sans les reduire. Utiliser la grille garder, adapter, supprimer. Le message cle : nous ne sommes pas SAFe ou anti-SAFe ; nous cherchons les mecanismes qui reduisent vraiment le cout de coordination. Transition : le marche actuel confirme cette decomposition en mecanismes.",
+      "Script, 5 minutes. Present SAFe as an integrated library of mechanisms. Do not caricature it: it addresses real problems in large organizations, especially alignment, dependencies, portfolio and integration. But it becomes costly when ceremonies replace decisions, when vocabulary becomes a marker of compliance, or when planning manages dependencies without reducing them. Use the keep, adapt, remove grid. The key message: we are not SAFe or anti-SAFe; we are looking for mechanisms that truly reduce coordination cost. Transition: current market signals confirm this decomposition into mechanisms.",
   },
   {
-    chapter: "Chapitre 5",
-    title: "Le marche ne remplace pas un framework par un autre, il recompose",
-    subtitle: "Les tendances 2025-2026 pointent vers l'hybridation, le produit, les plateformes, les metriques de flux et la gouvernance de l'IA.",
-    tag: "Tendances",
-    claim: "Les organisations abandonnent surtout la croyance qu'un framework suffit.",
+    chapter: "Chapter 5",
+    title: "The market is not replacing one framework with another; it is recomposing",
+    subtitle: "The 2025-2026 trends point toward hybridization, product thinking, platforms, flow metrics and AI governance.",
+    tag: "Trends",
+    claim: "Organizations are mostly abandoning the belief that a framework is enough.",
     points: [
-      "Les modeles hybrides et internes deviennent la norme dans les grandes organisations.",
-      "L'attention se deplace vers le systeme de livraison : flux, qualite, plateformes, priorites stables.",
-      "L'IA accelere le travail local mais renforce les besoins de verification, tracabilite et gouvernance.",
+      "Hybrid and internal models are becoming normal in large organizations.",
+      "Attention is shifting to the delivery system: flow, quality, platforms and stable priorities.",
+      "AI accelerates local work but increases the need for verification, traceability and governance.",
     ],
-    rightTitle: "Ce qui recule",
-    rightItems: ["Framework total", "Mesure d'activite", "Autonomie sans interfaces", "Ceremonies sans effet"],
+    rightTitle: "What is receding",
+    rightItems: ["Total framework", "Activity metrics", "Autonomy without interfaces", "Ceremonies without effect"],
     notes:
-      "Script, 5 minutes. Presenter ce chapitre comme un test de realite externe. Le marche ne montre pas une disparition simple de SAFe ni l'arrivee d'un successeur unique. Il montre une fragmentation : des organisations conservent certains mecanismes, les renomment, les combinent avec produit, DevOps, plateformes et Team Topologies. Faire ressortir l'enseignement principal : la performance se mesure moins par l'adoption ceremonielle que par le flux, la stabilite, la valeur et l'experience developpeur. Pour l'IA, etre prudent : elle n'annule pas la coordination, elle deplace les goulots vers la verification, la securite, la qualite des donnees et le contexte. Transition : si le marche decompose, le chapitre 6 reconstruit.",
+      "Script, 5 minutes. Present this chapter as an external reality check. The market does not show a simple disappearance of SAFe or the arrival of a single successor. It shows fragmentation: organizations keep some mechanisms, rename them, and combine them with product, DevOps, platforms and Team Topologies. Bring out the main lesson: performance is measured less by ceremonial adoption than by flow, stability, value and developer experience. Be careful with AI: it does not cancel coordination; it moves bottlenecks toward verification, security, data quality and context. Transition: if the market decomposes, chapter 6 reconstructs.",
   },
   {
-    chapter: "Chapitre 6",
-    title: "La reconstruction part d'une regle : reduire la coordination avant de l'organiser",
-    subtitle: "Le modele minimal ne cherche pas moins de structure en general, mais une structure plus juste.",
+    chapter: "Chapter 6",
+    title: "Reconstruction starts with one rule: reduce coordination before organizing it",
+    subtitle: "The minimal model is not looking for less structure in general, but for a more accurate structure.",
     tag: "Reconstruction",
-    claim: "Le meilleur mecanisme de coordination est celui qui rend une coordination inutile.",
+    claim: "The best coordination mechanism is the one that makes coordination unnecessary.",
     points: [
-      "Reduire les dependances structurelles avant de mieux les planifier.",
-      "Garder un petit nombre de mecanismes robustes : equipes stables, ownership, portefeuille limite, qualite, plateformes.",
-      "Retirer les formes qui ne produisent plus ni decision, ni feedback, ni reduction de risque.",
+      "Reduce structural dependencies before planning them better.",
+      "Keep a small set of robust mechanisms: stable teams, ownership, limited portfolio, quality and platforms.",
+      "Remove forms that no longer produce decisions, feedback or risk reduction.",
     ],
     rightTitle: "Operating system",
-    rightItems: ["Direction", "Responsabilite", "Coordination", "Technique", "Observation"],
+    rightItems: ["Direction", "Responsibility", "Coordination", "Technical layer", "Observation"],
     notes:
-      "Script, 5 minutes. Expliquer que la reconstruction inverse la logique habituelle. Au lieu de commencer par organiser les dependances, on cherche a les reduire par frontieres, plateformes, standards, automatisation, architecture et ownership. Ensuite seulement, on coordonne ce qui reste necessaire. Presenter la matrice minimale des mecanismes : alignement strategique leger, portefeuille avec WIP, planification proportionnee, visibility du flux, qualite integree, gouvernance technique legere, plateformes, boucle architecture-organisation, amelioration du modele et gouvernance IA. Insister sur le fait que ce n'est pas une checklist de framework : chaque mecanisme existe parce qu'un risque existe s'il est absent. Transition : le chapitre 7 transforme cette reconstruction en architecture organisationnelle cible.",
+      "Script, 5 minutes. Explain that the reconstruction reverses the usual logic. Instead of starting by organizing dependencies, it tries to reduce them through boundaries, platforms, standards, automation, architecture and ownership. Only then should the remaining necessary coordination be organized. Present the minimum mechanism matrix: lightweight strategic alignment, portfolio with WIP, proportionate planning, flow visibility, built-in quality, lightweight technical governance, platforms, architecture-organization loop, model improvement and AI governance. Stress that this is not a framework checklist: each mechanism exists because there is a risk if it is absent. Transition: chapter 7 turns this reconstruction into a target organizational architecture.",
   },
   {
-    chapter: "Chapitre 7",
-    title: "Le modele cible est une architecture de decisions et de feedbacks",
-    subtitle: "La strategie n'ordonne pas directement les taches ; elle oriente le portefeuille, les domaines et les contraintes de decision.",
-    tag: "Organisation cible",
-    claim: "Une organisation simplifiee conserve les mecanismes qui permettent aux equipes d'avancer sans demander permission partout.",
+    chapter: "Chapter 7",
+    title: "The target model is an architecture of decisions and feedback",
+    subtitle: "Strategy does not directly order team tasks; it guides the portfolio, domains and decision constraints.",
+    tag: "Target organization",
+    claim: "A simplified organization keeps the mechanisms that let teams move without asking permission everywhere.",
     points: [
-      "Strategie, portefeuille, domaines et equipes forment une chaine de responsabilite lisible.",
-      "Plateformes, architecture et qualite reduisent les coordinations humaines repetitives.",
-      "Les cadences et artefacts restent uniquement s'ils produisent decisions, feedback ou reduction de risque.",
+      "Strategy, portfolio, domains and teams form a readable responsibility chain.",
+      "Platforms, architecture and quality reduce repetitive human coordination.",
+      "Cadences and artifacts stay only when they produce decisions, feedback or risk reduction.",
     ],
-    rightTitle: "Criteres de viabilite",
-    rightItems: ["Priorites explicites", "WIP limite", "Ownership clair", "Flux visible"],
+    rightTitle: "Viability criteria",
+    rightItems: ["Explicit priorities", "Limited WIP", "Clear ownership", "Visible flow"],
     notes:
-      "Script, 5 minutes. Decrire le modele cible comme un systeme de decision et de feedback. Niveau 1 : intention strategique, qui clarifie les resultats et contraintes. Niveau 2 : portefeuille limite, qui traduit la strategie en choix et renoncements. Niveau 3 : domaines produit ou capacites, qui organisent la responsabilite. Niveau 4 : equipes stables, qui livrent dans des frontieres explicites. Puis les couches transverses : plateformes internes, gouvernance technique legere, qualite integree, metriques de flux et amelioration du modele. Insister sur les cadences minimales : une reunion sans sortie explicite doit changer ou disparaitre. Transition : la conclusion ramene tout a la discipline de simplification.",
+      "Script, 5 minutes. Describe the target model as a system of decisions and feedback. Level 1: strategic intent, which clarifies outcomes and constraints. Level 2: limited portfolio, which turns strategy into choices and trade-offs. Level 3: product domains or capabilities, which organize responsibility. Level 4: stable teams, which deliver within explicit boundaries. Then cover the transverse layers: internal platforms, lightweight technical governance, built-in quality, flow metrics and model improvement. Emphasize minimal cadences: a meeting without an explicit output should change or disappear. Transition: the conclusion brings everything back to the discipline of simplification.",
   },
   {
-    chapter: "Chapitre 8",
-    title: "Simplifier, c'est retirer ce qui ne resout plus rien et renforcer ce qui reste necessaire",
-    subtitle: "La cible n'est pas l'absence de structure ; c'est une structure adaptee aux problemes reels de l'organisation.",
+    chapter: "Chapter 8",
+    title: "Simplifying means removing what no longer solves anything and strengthening what remains necessary",
+    subtitle: "The target is not the absence of structure; it is a structure adapted to the organization's real problems.",
     tag: "Conclusion",
-    claim: "Le succes se mesure a la performance du systeme, pas a la disparition d'un framework.",
+    claim: "Success is measured by system performance, not by the disappearance of a framework.",
     points: [
-      "Les frameworks peuvent aider lorsqu'ils rendent visibles les mecanismes indispensables.",
-      "La simplification durable est socio-technique : architecture, qualite et plateformes comptent autant que les rituels.",
-      "Le modele doit rester revisable, car une structure utile aujourd'hui peut devenir une charge demain.",
+      "Frameworks can help when they make indispensable mechanisms visible.",
+      "Durable simplification is socio-technical: architecture, quality and platforms matter as much as rituals.",
+      "The model must remain revisable, because a useful structure today can become overhead tomorrow.",
     ],
-    rightTitle: "Message final",
-    rightItems: ["Aligner sans micro-manager", "Autonomiser sans abandonner", "Coordonner sans bureaucratiser", "Mesurer sans punir"],
+    rightTitle: "Final message",
+    rightItems: ["Align without micromanaging", "Empower without abandoning", "Coordinate without bureaucracy", "Measure without punishing"],
     notes:
-      "Script, 6 minutes. Reprendre le fil complet : l'echelle cree des problemes systemiques ; les principes permettent de les comprendre ; les frameworks assemblent des mecanismes ; SAFe doit etre decompose ; le marche recompose ; le modele minimal garde les fonctions indispensables ; l'organisation cible est une architecture de decisions et de feedbacks. Insister sur les criteres de succes : priorites plus claires, WIP portefeuille reduit, dependances visibles ou reduites, decisions au bon niveau, integration plus frequente, qualite detectee plus tot, ceremonies restantes decisives. Terminer avec la phrase centrale : la simplification n'est pas l'absence de structure, c'est la discipline de retirer les structures qui ne resolvent plus rien et de renforcer celles qui permettent encore au systeme de livrer, apprendre et evoluer.",
+      "Script, 6 minutes. Recap the full thread: scale creates systemic problems; principles make them understandable; frameworks assemble mechanisms; SAFe must be decomposed; the market recomposes; the minimal model keeps indispensable functions; the target organization is an architecture of decisions and feedback. Emphasize success criteria: clearer priorities, reduced portfolio WIP, dependencies made visible or reduced, decisions at the right level, more frequent integration, earlier quality detection and remaining ceremonies that actually produce decisions. End with the central phrase: simplification is not the absence of structure; it is the discipline of removing structures that no longer solve anything and strengthening those that still let the system deliver, learn and evolve.",
   },
 ];
 
